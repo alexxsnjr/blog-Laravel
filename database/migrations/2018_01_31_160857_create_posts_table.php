@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->mediumText('excert');
             $table->text('body');
             $table->timestamp('published_at')->nullable();
+            $table->unsignedInteger('category_id');
             $table->timestamps();
         });
     }
