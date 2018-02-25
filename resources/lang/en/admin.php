@@ -1,8 +1,7 @@
 <?php
 
-return[
-
+return [
     'layout' => [
-            'header' => 'HEADER'
-        ]
+        'header' => 'HEADER',
+    ],
 ];

@@ -15,9 +15,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="/adminlte/bower_components/Ionicons/css/ionicons.min.css">
-
-    @stack('styles')
-    <!-- Theme style -->
+@stack('styles')
+<!-- Theme style -->
     <link rel="stylesheet" href="/adminlte/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
@@ -64,9 +63,9 @@ desired effect
         <!-- Logo -->
         <a href="index2.html" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>B</span>
+            <span class="logo-mini"><b>B</b></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>{{config('app.name')}}</span>
+            <span class="logo-lg"><b>{{ config('app.name') }}</b></span>
         </a>
 
         <!-- Header Navbar -->
@@ -181,7 +180,7 @@ desired effect
                             <!-- The user image in the navbar-->
                             <img src="/adminlte/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Alexander Pierce</span>
+                            <span class="hidden-xs">{{ auth()->user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -189,33 +188,21 @@ desired effect
                                 <img src="/adminlte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2012</small>
+                                    {{ auth()->user()->name }} - {{ auth()->user()->roles->first()->name }}
+                                    <small>Desde {{ auth()->user()->created_at->format('d/M/Y') }}</small>
                                 </p>
                             </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </li>
+
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                                </div>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <div>
+                                        <button class="btn btn-default btn-flat btn-block">
+                                            Cerrar Sesión
+                                        </button>
+                                    </div>
+                                </form>
                             </li>
                         </ul>
                     </li>
@@ -244,6 +231,7 @@ desired effect
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
+
             @include('admin.partials.nav')
         </section>
         <!-- /.sidebar -->
@@ -255,11 +243,16 @@ desired effect
         <section class="content-header">
             @yield('header')
         </section>
-
         <!-- Main content -->
         <section class="content container-fluid">
 
-         @yield('content')
+            @if (session()->has('flash'))
+                <div class="alert alert-success">
+                    {{ session('flash') }}
+                </div>
+            @endif
+
+            @yield('content')
 
         </section>
         <!-- /.content -->
@@ -362,12 +355,14 @@ desired effect
 <!-- Bootstrap 3.3.7 -->
 <script src="/adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-@stack('scripts')
-
-
 <!-- AdminLTE App -->
 <script src="/adminlte/dist/js/adminlte.min.js"></script>
 
+@unless(request()->is('admin/posts/*'))
+    @include('admin.posts.create')
+@endunless
+
+@stack('scripts')
 
 </body>
 </html>

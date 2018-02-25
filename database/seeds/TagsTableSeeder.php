@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Tag;
+use Illuminate\Database\Seeder;
 
 class TagsTableSeeder extends Seeder
 {
@@ -15,15 +15,20 @@ class TagsTableSeeder extends Seeder
         Tag::truncate();
 
         $tag = new Tag;
-        $tag->name=('tag1');
+        $tag->name = 'Etiqueta 1';
         $tag->save();
 
         $tag = new Tag;
-        $tag->name=('tag2');
+        $tag->name = 'Etiqueta 2';
         $tag->save();
 
         $tag = new Tag;
-        $tag->name=('tag3');
+        $tag->name = 'Etiqueta 3';
         $tag->save();
+
+        $tag = new Tag;
+        $tag->name = 'Etiqueta 4';
+        $tag->save();
+
     }
 }

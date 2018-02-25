@@ -1,10 +1,7 @@
 <?php
 
-return[
-
+return [
     'layout' => [
-        'header' => 'Navegación'
-    ]
-
-
+        'header' => 'Navegación',
+    ],
 ];

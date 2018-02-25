@@ -15,6 +15,10 @@
     <div class="box">
         <div class="box-header">
             <h3 class="box-title">Listado de Publicaciones</h3>
+            <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-plus"></i>
+                Crear Publicación
+            </button>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -32,10 +36,25 @@
                     <tr>
                         <td>{{ $post->id }}</td>
                         <td>{{ $post->title }}</td>
-                        <td>{{ $post->excert }}</td>
+                        <td>{{ $post->excerpt }}</td>
                         <td>
-                            <a href="#" class="btn btn-xs btn-info"><i class="fa fa-pencil"></i></a>
-                            <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a>
+                            <a href="{{ route('posts.show', $post) }}"
+                               target="_blank" class="btn btn-xs btn-default">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            <a href="{{ route('admin.posts.edit' , $post) }}"
+                               class="btn btn-xs btn-info">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <form action="{{ route('admin.posts.destroy', $post) }}"
+                                  method="POST" style="display: inline">
+                                {{csrf_field()}} {{method_field('DELETE')}}
+                                <button  class="btn btn-xs btn-danger"
+                                    onclick="return confirm('¿Seguro que quiere elminar la publicación?')">
+                                    <i class="fa fa-times"></i>
+                                </button>
+
+                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -47,21 +66,14 @@
 @endsection
 
 @push('styles')
-
-    <!-- DataTables -->
     <link rel="stylesheet" href="/adminlte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-
-
 @endpush
 
 @push('scripts')
-    <!-- DataTables -->
     <script src="/adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
     <script>
         $(function () {
-
             $('#posts-table').DataTable({
                 'paging'      : true,
                 'lengthChange': false,
@@ -72,4 +84,5 @@
             })
         })
     </script>
+
 @endpush

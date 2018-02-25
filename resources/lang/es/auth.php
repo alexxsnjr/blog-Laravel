@@ -14,10 +14,9 @@ return [
 
     'failed' => 'Estas credenciales no coinciden con nuestros registros.',
     'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
-    'login' => 'Inicio de Sesión',
-    'singin' => 'Identifícate para iniciar Sesión',
+    'login' =>  'Inicio de Sesión',
+    'singin' => 'Identifícate para iniciar sesión',
     'remember' => 'Recuerdame',
     'singin_button' => 'Entrar',
     'forgot' => 'Olvidé mi contraseña',
-
 ];
