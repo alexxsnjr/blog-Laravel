@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="box box-primary">
                 <div class="box-body">
-
+                    <div class="row">
                         @foreach($post->photos as $photo)
                             <form action="{{ route('admin.photos.destroy', $photo) }}" method="POST">
                                 {{ csrf_field() }} {{ method_field('DELETE') }}
@@ -26,11 +26,11 @@
                                     <button class="btn btn-danger btn-xs" style="position: absolute">
                                         <i class="fa fa-remove"></i>
                                     </button>
-                                    <img src="{{ Storage::url( $photo->url) }}" class="img-responsive">
+                                    <img src="{{ Storage::url($photo->url) }}" class="img-responsive">
                                 </div>
                             </form>
                         @endforeach
-
+                    </div>
                 </div>
             </div>
         </div>

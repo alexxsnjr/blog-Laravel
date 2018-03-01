@@ -1,3 +1,3 @@
 <div class="video">
-    {!! $post->iframe !!}
+{!! $post->iframe !!}
 </div>

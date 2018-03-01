@@ -15,8 +15,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="/adminlte/bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="/adminlte/bower_components/Ionicons/css/ionicons.min.css">
-@stack('styles')
-<!-- Theme style -->
+    @stack('styles')
+    <!-- Theme style -->
     <link rel="stylesheet" href="/adminlte/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
@@ -232,7 +232,7 @@ desired effect
                 </div>
             </div>
 
-            @include('admin.partials.nav')
+        @include('admin.partials.nav')
         </section>
         <!-- /.sidebar -->
     </aside>

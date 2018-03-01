@@ -1,5 +1,5 @@
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <form action="{{ route('admin.posts.store' , '#create') }}" method="POST">
+    <form action="{{ route('admin.posts.store','#create') }}" method="POST">
         {{ csrf_field() }}
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -11,7 +11,7 @@
                     <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
                         <input type="text" name="title" class="form-control"
                                value="{{ old('title') }}" id="post-title"
-                               placeholder="Escribe el título de la publicación" required autofocus >
+                               placeholder="Escribe el título de la publicación" required autofocus>
                         {!! $errors->first('title', '<span class="help-block">:message</span>') !!}
                     </div>
                 </div>
@@ -26,18 +26,17 @@
 
 @push('scripts')
     <script>
-        if(window.location.hash === '#create'){
+        if (window.location.hash === '#create'){
             $('#myModal').modal('show');
         }
 
-        $('#myModal').on('hide.bs.modal', function () {
+        $('#myModal').on('hide.bs.modal', function(){
             window.location.hash = '#';
         });
 
-        $('#myModal').on('show.bs.modal', function () {
+        $('#myModal').on('shown.bs.modal', function(){
             $('#post-title').focus();
             window.location.hash = '#create';
-
         });
     </script>
 @endpush

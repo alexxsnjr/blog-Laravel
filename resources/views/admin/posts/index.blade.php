@@ -38,22 +38,21 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ $post->excerpt }}</td>
                         <td>
-                            <a href="{{ route('posts.show', $post) }}"
-                               target="_blank" class="btn btn-xs btn-default">
+                            <a href="{{ route('posts.show', $post) }}" target="_blank"
+                               class="btn btn-xs btn-default">
                                 <i class="fa fa-eye"></i>
                             </a>
-                            <a href="{{ route('admin.posts.edit' , $post) }}"
+                            <a href="{{ route('admin.posts.edit', $post) }}"
                                class="btn btn-xs btn-info">
                                 <i class="fa fa-pencil"></i>
                             </a>
                             <form action="{{ route('admin.posts.destroy', $post) }}"
-                                  method="POST" style="display: inline">
-                                {{csrf_field()}} {{method_field('DELETE')}}
-                                <button  class="btn btn-xs btn-danger"
-                                    onclick="return confirm('¿Seguro que quiere elminar la publicación?')">
+                                method="POST" style="display: inline">
+                                {{ csrf_field() }} {{ method_field('DELETE') }}
+                                <button class="btn btn-xs btn-danger"
+                                    onclick="return confirm('¿Seguro que quiere eliminar esta publicacion?')">
                                     <i class="fa fa-times"></i>
                                 </button>
-
                             </form>
                         </td>
                     </tr>
@@ -84,5 +83,4 @@
             })
         })
     </script>
-
 @endpush

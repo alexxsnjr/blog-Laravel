@@ -9,7 +9,6 @@ class CategoriesController extends Controller
 {
     public function show(Category $category)
     {
-        //devuelve los post de la categoria pasada por parametro (Lo devuelve paginado a 15)
         $posts = $category->posts()->paginate();
         $title = "Publicaciones de la categoría " . $category->name;
 

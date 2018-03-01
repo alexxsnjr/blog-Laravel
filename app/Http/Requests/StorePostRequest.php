@@ -21,7 +21,6 @@ class StorePostRequest extends FormRequest
      *
      * @return array
      */
-    //validaciones de Posts
     public function rules()
     {
         return [

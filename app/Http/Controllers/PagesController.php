@@ -9,8 +9,7 @@ class PagesController extends Controller
 {
     public function home()
     {
-        //devuelve los post que no tenga de fecha futura utilizando el scope del modelo Post, y lo hace paginado.
-        $posts = Post::published()->paginate();
+        $posts= Post::published()->paginate();
         return view('pages.home', compact('posts'));
     }
 

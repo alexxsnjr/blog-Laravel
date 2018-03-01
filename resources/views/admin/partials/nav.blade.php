@@ -1,5 +1,4 @@
 <ul class="sidebar-menu" data-widget="tree">
-
     <li class="header">@lang('admin.layout.header')</li>
     <!-- Optionally, you can add icons to the links -->
     <li {{ request()->is('admin') ? 'class=active' : '' }}>
@@ -21,8 +20,8 @@
                 </a>
             </li>
             <li>
-                @if(request()->is('admin/posts/*'))
-                    <a href="{{route('admin.posts.index', '#create')}}" >
+                @if (request()->is('admin/posts/*'))
+                    <a href="{{ route('admin.posts.index', '#create') }}">
                         <i class="fa fa-pencil"></i>
                         Crear un post
                     </a>
